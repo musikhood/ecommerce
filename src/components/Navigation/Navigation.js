@@ -9,6 +9,10 @@ import { Link } from "react-router-dom";
 
 export default function Navigation() {
   const cart = useSelector((state) => state.cart);
+  let allItemsInCart = 0;
+  cart.forEach((element) => {
+    allItemsInCart += element.quantityInCart;
+  });
   return (
     <nav className="nav">
       <Link to="/">
@@ -26,7 +30,7 @@ export default function Navigation() {
         </div>
         <Link className="nav__cart-link" to="/cart">
           <div className="cart">
-            {cart.length > 0 ? <div>{cart.length}</div> : null}
+            {allItemsInCart > 0 ? <div>{allItemsInCart}</div> : null}
             <ShoppingCartIcon />
           </div>
         </Link>

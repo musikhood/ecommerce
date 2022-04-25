@@ -9,7 +9,7 @@ import {
   removeProduct,
 } from "../../actions/actions";
 
-function Product({ id, name, img, cost, rate, inCart }) {
+function Product({ id, name, img, cost, rate, inCart, quantityInCart }) {
   const dispatch = useDispatch();
   return (
     <div className="product">
@@ -22,7 +22,7 @@ function Product({ id, name, img, cost, rate, inCart }) {
         </div>
         <div className="product__rate">{rate}</div>
         <div className="product__cost">
-          <p>{cost}</p>
+          <p>{cost}zł</p>
         </div>
         {inCart ? (
           <div
@@ -38,7 +38,9 @@ function Product({ id, name, img, cost, rate, inCart }) {
           <div
             className="product__toggle"
             onClick={() => {
-              dispatch(addProduct({ id, name, img, cost, rate }));
+              dispatch(
+                addProduct({ id, name, img, cost, rate, quantityInCart })
+              );
               dispatch(toggleProduct(id));
             }}
           >
