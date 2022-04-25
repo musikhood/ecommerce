@@ -2,7 +2,9 @@ import ACTIONS from "../actions/actions";
 
 let myCart = [];
 
-const storedCart = JSON.parse(localStorage.getItem("cart"));
+const LOCAL_STORAGE_KEY = "cart";
+
+const storedCart = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 if (storedCart) {
   myCart = storedCart;
 }
@@ -11,11 +13,11 @@ export default function cartReducer(cart = myCart, { type, payload }) {
   switch (type) {
     case ACTIONS.ADD_PRODUCT:
       const newState1 = [...cart, payload];
-      localStorage.setItem("cart", JSON.stringify(newState1));
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newState1));
       return newState1;
     case ACTIONS.REMOVE_PRODUCT:
       const newState2 = cart.filter((product) => product.id !== payload);
-      localStorage.setItem("cart", JSON.stringify(newState2));
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newState2));
       return newState2;
     case ACTIONS.ADD_QUANTITY:
       const newState3 = cart.map((product) => {
@@ -24,7 +26,7 @@ export default function cartReducer(cart = myCart, { type, payload }) {
         }
         return product;
       });
-      localStorage.setItem("cart", JSON.stringify(newState3));
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newState3));
       return newState3;
     case ACTIONS.REMOVE_QUANTITY:
       const newState4 = cart.map((product) => {
@@ -36,7 +38,7 @@ export default function cartReducer(cart = myCart, { type, payload }) {
         }
         return product;
       });
-      localStorage.setItem("cart", JSON.stringify(newState4));
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newState4));
       return newState4;
     default:
       return cart;

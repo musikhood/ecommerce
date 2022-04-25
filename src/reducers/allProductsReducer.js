@@ -1,9 +1,11 @@
 import products from "../data/products";
 import ACTIONS from "../actions/actions";
 
+const LOCAL_STORAGE_KEY = "allProducts";
+
 let allProducts = products;
 
-const storedAllProducts = JSON.parse(localStorage.getItem("allProducts"));
+const storedAllProducts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 if (storedAllProducts) {
   allProducts = storedAllProducts;
 }
@@ -20,7 +22,7 @@ export default function allProductsReducer(
         }
         return product;
       });
-      localStorage.setItem("allProducts", JSON.stringify(newState1));
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newState1));
       return newState1;
     default:
       return state;
