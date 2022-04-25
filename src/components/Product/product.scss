@@ -1,0 +1,53 @@
+.product {
+  width: 250px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0px 0px 23px 8px #ccc;
+  border-radius: 10px;
+  &__img-box {
+    width: 200px;
+    height: 200px;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &__about {
+    width: 100%;
+    position: relative;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 30px;
+  }
+  &__cost {
+    color: rgb(245, 151, 151);
+    font-size: 1.3rem;
+  }
+  &__toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 30px;
+    bottom: 0;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    &:hover {
+      background-color: rgb(245, 106, 106);
+      svg {
+        color: white;
+      }
+    }
+    svg {
+      font-size: 1.7rem;
+      transition: color 0.2s ease-in-out;
+    }
+  }
+}

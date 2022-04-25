@@ -4,8 +4,10 @@ import Logo from "../../images/logo.png";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
+import { useSelector } from "react-redux";
 
 export default function Navigation() {
+  const cart = useSelector((state) => state.cart);
   return (
     <nav className="nav">
       <div className="nav__logo-container">
@@ -20,6 +22,8 @@ export default function Navigation() {
           <PersonIcon />
         </div>
         <div className="cart">
+          {cart.length > 0 ? <div>{cart.length}</div> : null}
+
           <ShoppingCartIcon />
         </div>
       </div>

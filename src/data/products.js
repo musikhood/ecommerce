@@ -4,17 +4,19 @@ import tel2 from "../images/telefon2.png";
 const products = [
   {
     id: 1,
-    nazwa: "name",
-    zdjecie: tel,
-    cena: "100zł",
-    ocena: 5,
+    name: "name",
+    img: tel,
+    cost: "100zł",
+    rate: 5,
+    inCart: false,
   },
   {
     id: 2,
-    nazwa: "name2",
-    zdjecie: tel2,
-    cena: "300zł",
-    ocena: 4,
+    name: "name2",
+    img: tel2,
+    cost: "300zł",
+    rate: 4,
+    inCart: false,
   },
 ];
 

@@ -7,3 +7,11 @@
 html {
   font-family: "Lato", sans-serif;
 }
+
+.App {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem;
+  padding: 50px 20px;
+}
