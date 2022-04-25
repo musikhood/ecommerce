@@ -1,11 +1,22 @@
 import ACTIONS from "../actions/actions";
 
-export default function cartReducer(cart = [], { type, payload }) {
+let myCart = [];
+
+const storedCart = JSON.parse(localStorage.getItem("cart"));
+if (storedCart) {
+  myCart = storedCart;
+}
+
+export default function cartReducer(cart = myCart, { type, payload }) {
   switch (type) {
     case ACTIONS.ADD_PRODUCT:
-      return [...cart, payload];
+      const newState1 = [...cart, payload];
+      localStorage.setItem("cart", JSON.stringify(newState1));
+      return newState1;
     case ACTIONS.REMOVE_PRODUCT:
-      return cart.filter((product) => product.id !== payload);
+      const newState2 = cart.filter((product) => product.id !== payload);
+      localStorage.setItem("cart", JSON.stringify(newState2));
+      return newState2;
     default:
       return cart;
   }

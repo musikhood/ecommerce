@@ -4,7 +4,7 @@ import tel2 from "../images/telefon2.png";
 const products = [
   {
     id: 1,
-    name: "name",
+    name: "Samsung S2",
     img: tel,
     cost: "100zł",
     rate: 5,
@@ -12,7 +12,7 @@ const products = [
   },
   {
     id: 2,
-    name: "name2",
+    name: "Redmi Note 11",
     img: tel2,
     cost: "300zł",
     rate: 4,

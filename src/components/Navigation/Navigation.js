@@ -5,14 +5,17 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Navigation() {
   const cart = useSelector((state) => state.cart);
   return (
     <nav className="nav">
-      <div className="nav__logo-container">
-        <img src={Logo} alt="logo" />
-      </div>
+      <Link to="/">
+        <div className="nav__logo-container">
+          <img src={Logo} alt="logo" />
+        </div>
+      </Link>
       <div className="nav__search-box">
         <input type="text" placeholder="Search for item" spellCheck="false" />
         <SearchIcon className="search" />
@@ -21,11 +24,12 @@ export default function Navigation() {
         <div className="profile">
           <PersonIcon />
         </div>
-        <div className="cart">
-          {cart.length > 0 ? <div>{cart.length}</div> : null}
-
-          <ShoppingCartIcon />
-        </div>
+        <Link className="nav__cart-link" to="/cart">
+          <div className="cart">
+            {cart.length > 0 ? <div>{cart.length}</div> : null}
+            <ShoppingCartIcon />
+          </div>
+        </Link>
       </div>
     </nav>
   );

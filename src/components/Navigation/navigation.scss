@@ -13,8 +13,10 @@
   background-color: #fff;
   &__logo-container {
     width: 100px;
+    cursor: pointer;
     img {
       width: 100%;
+      pointer-events: none;
     }
   }
   &__search-box {
@@ -81,5 +83,8 @@
         background-color: rgb(255, 100, 100);
       }
     }
+  }
+  &__cart-link {
+    color: black;
   }
 }

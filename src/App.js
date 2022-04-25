@@ -1,14 +1,15 @@
-import { Navigation, Product } from "./components";
-import { useSelector } from "react-redux";
+import { Navigation } from "./components";
+import { Home, Cart } from "./pages";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const products = useSelector((state) => state.allProducts);
   return (
     <div className="App">
       <Navigation />
-      {products.map((product) => (
-        <Product key={product.id} {...product} />
-      ))}
+      <Routes>
+        <Route path="/" element={<Home />} exact />
+        <Route path="/cart" element={<Cart />} exact />
+      </Routes>
     </div>
   );
 }
