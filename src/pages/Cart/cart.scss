@@ -1,22 +1,106 @@
 .cartPage {
-  margin-top: 50px;
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-top: 120px;
   padding: 50px 20px;
   display: flex;
+  justify-content: center;
   gap: 5rem;
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
   &__products {
+    max-width: 600px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
   }
   &__finalization {
     width: 300px;
-    height: 150px;
-    box-shadow: 0px 0px 23px 8px #ccc;
-    border-radius: 15px;
-    padding: 0 40px;
+    height: 180px;
+    padding: 15px 30px;
+    border: 1px solid var(--light-gray);
+    border-radius: 11px;
+    position: relative;
+
+    h2 {
+      font-weight: normal;
+      font-size: 18px;
+    }
+  }
+  &__box {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 30px;
+    justify-content: space-between;
+    width: 300px;
+    height: 130px;
+    padding: 25px 30px;
+    font-weight: bold;
+    font-size: 19px;
+    border: 1px solid var(--light-gray);
+    border-radius: 11px;
+    background-color: var(--light-gray-2);
+    position: absolute;
+    left: -1px;
+    bottom: -1px;
+    .price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .checkout {
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--white);
+        text-decoration: none;
+        width: 100%;
+        height: 35px;
+        border-radius: 29px;
+        background-color: var(--dark-green);
+        transition: opacity 0.2s ease-in-out;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    @media screen and (max-width: 1000px) {
+      flex-direction: column;
+      width: auto;
+      align-items: center;
+    }
+  }
+  &__button {
+    svg {
+      width: 21px;
+      height: 21px;
+    }
+    a {
+      width: 135px;
+      height: 35px;
+      border: 1px solid var(--light-gray);
+      border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--black);
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.2s ease-in-out;
+    }
+    &:hover {
+      a {
+        background-color: var(--light-gray-2);
+      }
+    }
   }
 }

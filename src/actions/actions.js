@@ -1,7 +1,6 @@
 const ACTIONS = {
   ADD_PRODUCT: "add-product",
   REMOVE_PRODUCT: "remove-product",
-  TOGGLE_PRODUCT: "toggle-product",
   ADD_QUANTITY: "add-quantity",
   REMOVE_QUANTITY: "remove-quantity",
 };
@@ -16,13 +15,6 @@ export function addProduct(data) {
 export function removeProduct(id) {
   return {
     type: ACTIONS.REMOVE_PRODUCT,
-    payload: id,
-  };
-}
-
-export function toggleProduct(id) {
-  return {
-    type: ACTIONS.TOGGLE_PRODUCT,
     payload: id,
   };
 }

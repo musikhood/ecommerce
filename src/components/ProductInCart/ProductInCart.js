@@ -1,16 +1,15 @@
 import React from "react";
 import "./productInCart.scss";
-import CloseIcon from "@mui/icons-material/Close";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useDispatch } from "react-redux";
 import {
-  toggleProduct,
   removeProduct,
   addQuantity,
   removeQuantity,
 } from "../../actions/actions";
-function ProductInCart({ id, name, img, cost, rate, quantityInCart }) {
+function ProductInCart({ id, name, img, previousCost, cost, quantityInCart }) {
   const dispatch = useDispatch();
   return (
     <div className="productInCart">
@@ -21,42 +20,43 @@ function ProductInCart({ id, name, img, cost, rate, quantityInCart }) {
         <div className="productInCart__name">
           <h2>{name}</h2>
         </div>
-        <div className="productInCart__rate">{rate}</div>
-        <div className="productInCart__cost">
-          <p>
-            {quantityInCart > 1 ? `${quantityInCart}x` : ""} {cost}zł
-          </p>
+        <div className="productInCart__container">
+          <div className="productInCart__cost">
+            {previousCost && <p className="previous-cost">{previousCost}zł</p>}
+            <p className="cost">{cost}zł</p>
+          </div>
+          <div className="productInCart__quantity">
+            <div
+              className="productInCart__button productInCart__remove"
+              onClick={() => {
+                if (quantityInCart === 1) {
+                  dispatch(removeProduct(id));
+                } else {
+                  dispatch(removeQuantity(id));
+                }
+              }}
+            >
+              <RemoveIcon />
+            </div>
+            <p>{quantityInCart}</p>
+            <div
+              className="productInCart__button productInCart__add"
+              onClick={() => {
+                dispatch(addQuantity(id));
+              }}
+            >
+              <AddIcon />
+            </div>
+          </div>
         </div>
       </div>
       <div
-        className="productInCart__button productInCart__button--delete"
+        className="productInCart__delete"
         onClick={() => {
-          dispatch(toggleProduct(id));
           dispatch(removeProduct(id));
         }}
       >
-        <CloseIcon />
-      </div>
-      <div
-        className="productInCart__button productInCart__button--remove"
-        onClick={() => {
-          if (quantityInCart === 1) {
-            dispatch(toggleProduct(id));
-            dispatch(removeProduct(id));
-          } else {
-            dispatch(removeQuantity(id));
-          }
-        }}
-      >
-        <RemoveIcon />
-      </div>
-      <div
-        className="productInCart__button productInCart__button--add"
-        onClick={() => {
-          dispatch(addQuantity(id));
-        }}
-      >
-        <AddIcon />
+        <DeleteForeverIcon />
       </div>
     </div>
   );

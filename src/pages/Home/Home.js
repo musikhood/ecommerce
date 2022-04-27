@@ -1,10 +1,9 @@
 import React from "react";
 import "./home.scss";
 import { Product } from "../../components";
-import { useSelector } from "react-redux";
+import products from "../../data/products";
 
 function Home() {
-  const products = useSelector((state) => state.allProducts);
   return (
     <div className="home">
       {products.map((product) => (

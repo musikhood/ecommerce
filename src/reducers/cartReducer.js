@@ -12,7 +12,24 @@ if (storedCart) {
 export default function cartReducer(cart = myCart, { type, payload }) {
   switch (type) {
     case ACTIONS.ADD_PRODUCT:
-      const newState1 = [...cart, payload];
+      let alreadyInCart = false;
+      cart.forEach((item) => {
+        if (item.id === payload.id) {
+          alreadyInCart = true;
+        }
+      });
+      let newState1;
+      if (alreadyInCart) {
+        newState1 = cart.map((product) => {
+          if (product.id === payload.id) {
+            product.quantityInCart += 1;
+          }
+          return product;
+        });
+      } else {
+        newState1 = [...cart, { ...payload, inCart: true }];
+      }
+
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newState1));
       return newState1;
     case ACTIONS.REMOVE_PRODUCT:

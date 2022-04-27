@@ -1,15 +1,20 @@
 import React from "react";
 import "./product.scss";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import Rating from "../Rating/Rating";
 import { useDispatch } from "react-redux";
-import {
-  addProduct,
-  toggleProduct,
-  removeProduct,
-} from "../../actions/actions";
+import { addProduct } from "../../actions/actions";
 
-function Product({ id, name, img, cost, rate, inCart, quantityInCart }) {
+function Product({
+  id,
+  name,
+  img,
+  previousCost,
+  cost,
+  rate,
+  inCart,
+  quantityInCart,
+}) {
   const dispatch = useDispatch();
   return (
     <div className="product">
@@ -20,33 +25,33 @@ function Product({ id, name, img, cost, rate, inCart, quantityInCart }) {
         <div className="product__name">
           <h2>{name}</h2>
         </div>
-        <div className="product__rate">{rate}</div>
-        <div className="product__cost">
-          <p>{cost}zł</p>
+        <div className="product__rate">
+          <Rating rate={rate} />
         </div>
-        {inCart ? (
-          <div
-            className="product__toggle"
-            onClick={() => {
-              dispatch(toggleProduct(id));
-              dispatch(removeProduct(id));
-            }}
-          >
-            <RemoveIcon />
-          </div>
-        ) : (
-          <div
-            className="product__toggle"
-            onClick={() => {
-              dispatch(
-                addProduct({ id, name, img, cost, rate, quantityInCart })
-              );
-              dispatch(toggleProduct(id));
-            }}
-          >
-            <AddIcon />
-          </div>
-        )}
+        <div className="product__cost">
+          {previousCost && <p className="previous-cost">{previousCost}zł</p>}
+          <p className="cost">{cost}zł</p>
+        </div>
+
+        <div
+          className="product__add"
+          onClick={() => {
+            dispatch(
+              addProduct({
+                id,
+                name,
+                img,
+                previousCost,
+                cost,
+                rate,
+                inCart,
+                quantityInCart,
+              })
+            );
+          }}
+        >
+          <AddShoppingCartIcon />
+        </div>
       </div>
     </div>
   );
