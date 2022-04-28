@@ -8,6 +8,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { searching } from "../../actions/actions";
+import data from "../../data/suggestions";
 
 export default function Navigation() {
   const cart = useSelector((state) => state.cart);
@@ -53,6 +54,28 @@ export default function Navigation() {
         />
         <div className="nav__search-icon-box" onClick={search}>
           <SearchIcon className="search" />
+        </div>
+        <div className="nav__suggestions">
+          {input !== "" &&
+            data
+              .filter((product) =>
+                product.name
+                  .toLocaleLowerCase()
+                  .includes(input.toLocaleLowerCase())
+              )
+              .map((item, index) => (
+                <div
+                  key={index}
+                  className="suggestion"
+                  onClick={() => {
+                    dispatch(searching(item.name));
+                    history("/search");
+                    setInput("");
+                  }}
+                >
+                  {item.name}
+                </div>
+              ))}
         </div>
       </div>
       <div className="nav__user-box">

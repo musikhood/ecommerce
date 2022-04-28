@@ -8,7 +8,7 @@
   top: 0;
   left: 0;
   right: 0;
-  overflow: hidden;
+  // overflow: hidden;
   border-bottom: 1px solid var(--light-gray);
   background-color: #fff;
   box-shadow: 0px 0px 16px 0 var(--shadow);
@@ -161,6 +161,30 @@
         font-weight: bold;
         background-color: var(--red);
         font-size: 12px;
+      }
+    }
+  }
+  &__suggestions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40px;
+    max-height: 400px;
+    border-radius: 25px;
+    background-color: var(--light-gray-2);
+    overflow: hidden;
+    .suggestion {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      &:hover {
+        background-color: var(--light-gray);
+      }
+      &:not(:last-of-type) {
+        border-bottom: 1px solid var(--light-gray);
       }
     }
   }
