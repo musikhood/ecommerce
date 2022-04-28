@@ -30,10 +30,14 @@
       font-size: 14px;
     }
     h2 {
-      font-weight: 400;
-      font-size: 21px;
-      @media screen and (max-width: 650px) {
-        font-size: 19px;
+      a {
+        font-weight: 400;
+        font-size: 21px;
+        color: var(--black);
+        text-decoration: none;
+        @media screen and (max-width: 650px) {
+          font-size: 18px;
+        }
       }
     }
   }

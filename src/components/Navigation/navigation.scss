@@ -164,27 +164,36 @@
       }
     }
   }
+  &__searchbar:focus + &__suggestions {
+    display: block;
+  }
   &__suggestions {
+    display: none;
     position: absolute;
     left: 0;
     right: 0;
     top: 40px;
-    max-height: 400px;
+    max-height: 300px;
     border-radius: 25px;
     background-color: var(--light-gray-2);
     overflow: hidden;
+    &:hover {
+      display: block;
+    }
+    @media screen and (max-width: 650px) {
+      margin: 0 30px;
+    }
     .suggestion {
       height: 50px;
       display: flex;
       align-items: center;
       padding-left: 20px;
       cursor: pointer;
+      color: black;
       transition: background-color 0.2s ease-in-out;
+      border-top: 1px solid var(--light-gray);
       &:hover {
         background-color: var(--light-gray);
-      }
-      &:not(:last-of-type) {
-        border-bottom: 1px solid var(--light-gray);
       }
     }
   }

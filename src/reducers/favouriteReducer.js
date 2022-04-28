@@ -13,12 +13,6 @@ function getDate() {
   const today = new Date();
   let month = today.getMonth() + 1;
   let day = today.getDate();
-  let hours = today.getHours();
-  hours = hours < 10 ? "0" + hours : hours;
-  let minutes = today.getMinutes();
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  let seconds = today.getSeconds();
-  seconds = seconds < 10 ? "0" + seconds : seconds;
   const date =
     today.getFullYear() +
     "-" +
@@ -26,9 +20,7 @@ function getDate() {
     "-" +
     (day < 10 ? "0" + day : day);
 
-  const time = hours + ":" + minutes + ":" + seconds;
-
-  return date + " " + time;
+  return date;
 }
 
 export default function favouriteReducer(

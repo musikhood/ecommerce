@@ -9,6 +9,7 @@ import {
   addFavourite,
   removeFavourite,
 } from "../../actions/actions";
+import { Link } from "react-router-dom";
 
 function Product({
   id,
@@ -37,11 +38,15 @@ function Product({
   return (
     <div className="product">
       <div className="product__img-box">
-        <img src={img} alt="product" />
+        <Link to={`/product/${id}`}>
+          <img src={img} alt="product" />
+        </Link>
       </div>
       <div className="product__about">
         <div className="product__name">
-          <h2>{name}</h2>
+          <h2>
+            <Link to={`/product/${id}`}>{name}</Link>
+          </h2>
         </div>
         <div className="product__rate">
           <Rating rate={rate} />

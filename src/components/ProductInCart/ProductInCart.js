@@ -9,16 +9,21 @@ import {
   addQuantity,
   removeQuantity,
 } from "../../actions/actions";
+import { Link } from "react-router-dom";
 function ProductInCart({ id, name, img, previousCost, cost, quantityInCart }) {
   const dispatch = useDispatch();
   return (
     <div className="productInCart">
       <div className="productInCart__img-box">
-        <img src={img} alt="product" />
+        <Link to={`/product/${id}`}>
+          <img src={img} alt="product" />
+        </Link>
       </div>
       <div className="productInCart__about">
         <div className="productInCart__name">
-          <h2>{name}</h2>
+          <h2>
+            <Link to={`/product/${id}`}>{name}</Link>
+          </h2>
         </div>
         <div className="productInCart__container">
           <div className="productInCart__cost">

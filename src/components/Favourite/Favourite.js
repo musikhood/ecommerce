@@ -3,6 +3,7 @@ import "./favourite.scss";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { removeFavourite } from "../../actions/actions";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Favourite({ id, name, img, previousCost, cost, whenAdded }) {
   const dispatch = useDispatch();
@@ -10,11 +11,15 @@ function Favourite({ id, name, img, previousCost, cost, whenAdded }) {
     <div className="favourite">
       <div className="favourite__container">
         <div className="favourite__img-box">
-          <img src={img} alt="fav product" />
+          <Link to={`/product/${id}`}>
+            <img src={img} alt="fav product" />
+          </Link>
         </div>
         <div className="favourite__about">
           <p>Added: {whenAdded}</p>
-          <h2>{name}</h2>
+          <h2>
+            <Link to={`/product/${id}`}>{name}</Link>
+          </h2>
         </div>
       </div>
       <div className="favourite__cost">

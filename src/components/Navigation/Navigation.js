@@ -8,7 +8,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { searching } from "../../actions/actions";
-import data from "../../data/suggestions";
+import data from "../../data/products";
 
 export default function Navigation() {
   const cart = useSelector((state) => state.cart);
@@ -48,13 +48,11 @@ export default function Navigation() {
           type="text"
           placeholder="Search for item"
           spellCheck="false"
+          className="nav__searchbar"
           onChange={onChangeHandler}
           onKeyDown={onKeyDownHandler}
           value={input}
         />
-        <div className="nav__search-icon-box" onClick={search}>
-          <SearchIcon className="search" />
-        </div>
         <div className="nav__suggestions">
           {input !== "" &&
             data
@@ -64,18 +62,27 @@ export default function Navigation() {
                   .includes(input.toLocaleLowerCase())
               )
               .map((item, index) => (
-                <div
+                <Link
                   key={index}
-                  className="suggestion"
-                  onClick={() => {
-                    dispatch(searching(item.name));
-                    history("/search");
-                    setInput("");
-                  }}
+                  to={`/product/${item.id}`}
+                  style={{ textDecoration: "none" }}
                 >
-                  {item.name}
-                </div>
+                  <div
+                    key={index}
+                    className="suggestion"
+                    onClick={() => {
+                      dispatch(searching(item.name));
+                      history("/");
+                      setInput("");
+                    }}
+                  >
+                    {item.name}
+                  </div>
+                </Link>
               ))}
+        </div>
+        <div className="nav__search-icon-box" onClick={search}>
+          <SearchIcon className="search" />
         </div>
       </div>
       <div className="nav__user-box">
