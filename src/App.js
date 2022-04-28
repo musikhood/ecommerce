@@ -1,5 +1,5 @@
 import { Navigation } from "./components";
-import { Home, Cart, Favourites } from "./pages";
+import { Home, Cart, Favourites, Search } from "./pages";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
         <Route path="/" element={<Home />} exact />
         <Route path="/cart" element={<Cart />} exact />
         <Route path="/favourites" element={<Favourites />} exact />
+        <Route path="/search" element={<Search />} exact />
       </Routes>
     </div>
   );

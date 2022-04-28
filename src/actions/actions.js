@@ -5,12 +5,20 @@ const ACTIONS = {
   REMOVE_QUANTITY: "remove-quantity",
   ADD_FAVOURITE: "add-favourite",
   REMOVE_FAVOURITE: "remove-favourite",
+  SEARCH: "search",
 };
 
 export function addProduct(data) {
   return {
     type: ACTIONS.ADD_PRODUCT,
     payload: data,
+  };
+}
+
+export function searching(input) {
+  return {
+    type: ACTIONS.SEARCH,
+    payload: input,
   };
 }
 

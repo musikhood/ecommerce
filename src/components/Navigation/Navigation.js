@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./navigation.scss";
 import Logo from "../../images/logo.png";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { searching } from "../../actions/actions";
 
 export default function Navigation() {
   const cart = useSelector((state) => state.cart);
@@ -14,6 +15,26 @@ export default function Navigation() {
   cart.forEach((element) => {
     allItemsInCart += element.quantityInCart;
   });
+  const [input, setInput] = useState("");
+  const dispatch = useDispatch();
+
+  function onChangeHandler(e) {
+    setInput(e.target.value);
+  }
+  let history = useNavigate();
+
+  function search() {
+    dispatch(searching(input));
+    history("/search");
+    setInput("");
+  }
+
+  function onKeyDownHandler(e) {
+    if (e.key === "Enter") {
+      search();
+    }
+  }
+
   return (
     <nav className="nav">
       <Link to="/">
@@ -22,8 +43,15 @@ export default function Navigation() {
         </div>
       </Link>
       <div className="nav__search-box">
-        <input type="text" placeholder="Search for item" spellCheck="false" />
-        <div className="nav__search-icon-box">
+        <input
+          type="text"
+          placeholder="Search for item"
+          spellCheck="false"
+          onChange={onChangeHandler}
+          onKeyDown={onKeyDownHandler}
+          value={input}
+        />
+        <div className="nav__search-icon-box" onClick={search}>
           <SearchIcon className="search" />
         </div>
       </div>
