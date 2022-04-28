@@ -28,9 +28,11 @@ export default function Navigation() {
         </div>
       </div>
       <div className="nav__user-box">
-        <div className="favourite">
-          <FavoriteIcon />
-        </div>
+        <Link to="/favourites">
+          <div className="favouritePage">
+            <FavoriteIcon />
+          </div>
+        </Link>
         <div className="profile">
           <PersonIcon />
         </div>

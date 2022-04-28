@@ -1,5 +1,5 @@
 import { Navigation } from "./components";
-import { Home, Cart } from "./pages";
+import { Home, Cart, Favourites } from "./pages";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} exact />
         <Route path="/cart" element={<Cart />} exact />
+        <Route path="/favourites" element={<Favourites />} exact />
       </Routes>
     </div>
   );

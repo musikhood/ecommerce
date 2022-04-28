@@ -1,0 +1,46 @@
+.favourites {
+  margin: 0 auto;
+  margin-top: 120px;
+  max-width: 600px;
+  width: 100%;
+  padding: 50px 20px;
+  &__container-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    width: 100%;
+    h1 {
+      font-size: 30px;
+      font-weight: 300;
+    }
+  }
+  &__button {
+    svg {
+      width: 21px;
+      height: 21px;
+    }
+    a {
+      width: 135px;
+      height: 35px;
+      border: 1px solid var(--light-gray);
+      border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--black);
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.2s ease-in-out;
+    }
+    &:hover {
+      a {
+        background-color: var(--light-gray-2);
+      }
+    }
+  }
+  &__container-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
